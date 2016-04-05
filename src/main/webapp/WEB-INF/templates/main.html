@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="app/css/main.css" />
+<link rel="stylesheet" type="text/css" href="app/js/lib/bootstrap/css/bootstrap.css" />
+<title>login</title>
+</head>
+<body>
+<!-- 	<div th:text="${hello}">hello</div>
+	<h2 th:text="${world}">world</h2> -->
+
+	<div class="container">
+		<!-- login -->
+		<div th:if="${username eq null}">
+			<form name='f' th:action="@{/loginPost}" method='POST'  >
+			<table>
+					<tr>
+						<td>User:</td>
+						<td><input type='text' name='username' value='' /></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type='password' name='password' /></td>
+					</tr>
+					<tr>
+						<td colspan='2'><input name="submit" type="submit"
+							value="Login" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>	
+		
+		<!-- main -->
+		<div th:if="${username ne null}">
+			<div th:text="${'wlecome ' + username}" >username</div> 
+			<a th:href="@{/logout}">Logout </a>
+			
+				
+	
+			<ul class="nav nav-pills">
+			  <li class="active"><a  href="#/home">Home</a></li>
+			  <li><a href="#/accout">Accout</a></li>
+			  <li><a href="#/login">Login</a></li>
+			</ul>
+			
+			<div class="">
+				<ng-view></ng-view>
+			</div>
+	
+		
+			
+		</div>
+	</div><!-- end of container -->
+	
+</body>
+<script src="app/js/lib/requirejs/require.js" data-main="./app/js/common/main.js"></script>
+
+</html>

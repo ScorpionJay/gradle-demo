@@ -11,13 +11,14 @@
 		/> </http> -->
 
 	<http pattern="/css/**" security="none"/>
+	<http pattern="/app/**/*" security="none"/>
 
 	<http use-expressions="false">
-		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/main" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/**" access="ROLE_USER" />
-		<form-login login-page='/login' default-target-url='/home.html' login-processing-url="/loginPost"
+		<form-login login-page='/main' default-target-url='/main' login-processing-url="/loginPost"
 		always-use-default-target='true' />
-		<logout logout-url="/logout"/>
+		<logout logout-url="/logout" logout-success-url="/main"	/>
 		<csrf disabled="true"/>
 	</http>
 
