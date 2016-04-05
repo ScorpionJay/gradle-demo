@@ -17,6 +17,7 @@ define(['angular','util'],function(angular,util){
 		httpService.get('app/json/test.json').then(function(data){
 			console.log('success');
 			console.log(data);
+			$scope.data = data;
 
 		},function(data){
 			console.log('error');

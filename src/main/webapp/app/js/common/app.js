@@ -31,5 +31,40 @@ define(['angular','route','home/homeController'
 			});
 	});
 
+	
+	// 3. run	
+	app.run(['$rootScope', '$location', function($rootScope) {
+        $rootScope.$on('$routeChangeSuccess', function(newV) {
+        	window.scrollTo(0,0);// to top
+        });
+//        $rootScope.$on('$routeChangeStart', function(newV) {
+//        	window.scrollTo(0,0);// to top
+//        });
+    }]);
+	
+	
+	// 自定义格式化
+	app.filter('testFilter',function(){
+		return function(text,str) {
+		      // filters need to be forgiving so check input validity
+		      return text + " filter by jay" + str;
+		    };
+	});
+	
+	app.filter('nickFilter',function(){
+		return  function(nickName){
+			if(nickName){
+				if(nickName.length<=2){
+					return "*";
+				}else{
+					return nickName.substring(0, 1)+"***"+nickName.substring(nickName.length-1, nickName.length)
+				}
+			}else{
+				return "*"
+			}
+		}
+	});
+
+	
 
 });
